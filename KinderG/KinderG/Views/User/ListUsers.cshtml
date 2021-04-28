@@ -1,0 +1,59 @@
+﻿@model KinderGPI.Models.UserViewModel
+
+@{
+    ViewBag.Title = "ListUsers";
+    Layout = "~/Views/Shared/_Module.cshtml";
+}
+
+<center><h2>List of users</h2></center>
+
+
+@using (Html.BeginForm())
+{
+<div style="color:black; font-size:10pt;" ng-hide="true">
+    @Html.TextBox("searchString")
+    <button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4" type="submit" value="Search" id="submit">
+        <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+    </button>
+</div>
+    }
+<h1 style="color:black; font-size:10pt;" ng-hide="true">
+  
+</h1>
+
+<table class="table">
+    <tr>
+
+        <th style="color:black; font-size:10pt;" ng-hide="true"> Username </th>
+        <th style="color:black; font-size:10pt;" ng-hide="true">Email</th>
+        <th style="color:black; font-size:10pt;" ng-hide="true">Options</th>
+    </tr>
+
+    @foreach (var item in Model.users)
+    {
+        <tr>
+            <td style="color:black; font-size:10pt;" ng-hide="true">
+
+                @Html.DisplayFor(modelItem => item.username)
+           
+            </td>
+            <td style="color:black; font-size:10pt;" ng-hide="true">
+         
+                @Html.DisplayFor(modelItem => item.email)
+         
+            </td>
+  
+
+            <td>
+
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { onclick = "return confirm('Are you sure you wish to delete this Product?');" }) )|
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+
+
+
+</table>

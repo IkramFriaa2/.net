@@ -1,0 +1,83 @@
+﻿@model KinderGPI.Models.Child
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Module.cshtml";
+}
+<div class="item">
+    <img src="~/Content/img/kid.jpg" class="img-responsive" alt="">
+    <div class="carousel-caption">
+
+
+        @using (Html.BeginForm())
+        {
+            <th style="color:black; font-size:10pt;" ng-hide="true">
+                @Html.ValidationSummary(true, "Account creation was unsuccessful. Please correct the errors and try again.")
+            </th> {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <hr />
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group" style="color:black; font-size:10pt;" ng-hide="true">
+
+                        @Html.LabelFor(model => model.firstname, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                        <div class="col-md-10" style="color:black; font-size:10pt;" ng-hide="true">
+
+                            @Html.EditorFor(model => model.firstname, new { htmlAttributes = new { @class = "form-control" } })
+
+
+                            @Html.ValidationMessageFor(model => model.firstname, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="color:black; font-size:10pt;" ng-hide="true">
+
+                        @Html.LabelFor(model => model.lastname, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.lastname, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.lastname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="color:black; font-size:10pt;" ng-hide="true">
+                        @Html.LabelFor(model => model.age, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10" style="color:black; font-size:10pt;" ng-hide="true">
+                            @Html.EditorFor(model => model.age, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.age, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group" style="color:black; font-size:10pt;" ng-hide="true">
+                        @Html.LabelFor(model => model.sex, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10" style="color:black; font-size:10pt;" ng-hide="true">
+                            <select id="roles" name="roles">
+                                <option value="0">Fille</option>
+                                <option value="1">Garçon</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Add" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+        }
+
+
+
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    </div>
+</div>

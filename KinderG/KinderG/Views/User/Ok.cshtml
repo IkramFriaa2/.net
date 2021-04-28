@@ -1,0 +1,26 @@
+﻿@model KinderGPI.Models.User
+@{
+    ViewBag.Title = "Ok";
+
+}
+<div class="item">
+    <img src="~/Content/img/thanks.jpg" class="img-responsive" alt="">
+    <div class="carousel-caption">
+        if (@Model.roles.Contains("ROLE_ADMIN"){
+        <h2>Thanks @Model.isAuthorized for choosing our application !  </h2>
+        }
+        if (@Model.roles.Contains("ROLE_PARENT"){
+        <h2>Thanks @Model.isAuthorized for choosing our application hhhhhhhhhhhh parent !  </h2>
+        }
+        @foreach (var item in Model.roles)
+        {
+            <tr>
+                <td style="color:black; font-size:10pt;" ng-hide="true">
+
+                    @Html.DisplayFor(modelItem => item)
+
+                </td>
+            </tr>
+        }
+    </div>
+    </div>
